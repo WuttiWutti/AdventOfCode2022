@@ -16,7 +16,6 @@ end
 
 sum = 0
 first = ["", "", ""]
-second = ["", "", ""]
 
 open("docs\\input3.txt") do f
     while !eof(f)
