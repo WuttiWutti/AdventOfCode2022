@@ -1,3 +1,16 @@
+mat = [3 0 6; 6 3 0; 0 6 3]
+solution = 0;
+
+function getRowIndex(cartesian, a)
+    result = 0
+    foreach(x-> 
+        if x[2] == a
+            result = x[1]
+        end
+    ,cartesian)
+    return result
+end
+
 function getCol(a)
     b = 0
     if a == "A" || a == "X"
@@ -10,8 +23,19 @@ function getCol(a)
     return b
 end
 
-mat = [3 0 6; 6 3 0; 0 6 3]
-solution = 0;
+function  getRow(a, b)
+    c = 0
+    if b == "X"
+        t = findall(x->x==0, mat)
+        c = getRowIndex(t, a)
+    elseif b == "Y"
+        t = findall(x->x==3, mat)
+        c = getRowIndex(t, a)
+    elseif b == "Z"
+        t = findall(x->x==6, mat)
+        c = getRowIndex(t, a)
+    end
+end
 
 open("docs\\input2.txt") do f 
     while ! eof(f) 
@@ -20,10 +44,10 @@ open("docs\\input2.txt") do f
         arr = split(s," ");
 
         col = getCol(arr[1])
-        row = getCol(arr[2])
+        row = getRow(col, arr[2])
 
+        getRow("a", arr[2])
         global solution += (row + mat[row, col])
-        println(solution)
     end
       println(solution);
   end
