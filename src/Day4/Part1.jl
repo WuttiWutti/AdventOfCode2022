@@ -14,9 +14,7 @@ open("docs\\input4.txt") do f
     while !eof(f)
         # read a new / next line     
         s = readline(f)
-
-        MaxMinSame = false
-
+        
         first = SubString(s, 1, (findfirst(",", s)[1]) - 1)
         second = SubString(s, (findfirst(",", s)[1]) + 1, length(s))
 
